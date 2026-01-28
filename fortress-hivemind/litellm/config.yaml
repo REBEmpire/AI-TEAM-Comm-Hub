@@ -1,0 +1,25 @@
+model_list:
+  - model_name: claude-analyst
+    litellm_params:
+      model: anthropic/claude-3-5-sonnet-20240620
+      api_key: os.environ/ANTHROPIC_API_KEY
+
+  - model_name: gemini-researcher
+    litellm_params:
+      model: gemini/gemini-1.5-pro
+      api_key: os.environ/GEMINI_API_KEY
+
+  - model_name: grok-intel
+    litellm_params:
+      model: openai/grok-beta
+      api_key: os.environ/XAI_API_KEY
+      api_base: https://api.x.ai/v1
+
+  - model_name: abacus-driver
+    litellm_params:
+      model: gemini/gemini-1.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+
+general_settings:
+  proxy_budget_rescheduler_min_time: 60
+  master_key: os.environ/LITELLM_MASTER_KEY

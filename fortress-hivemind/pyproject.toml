@@ -1,0 +1,13 @@
+[project]
+name = "fortress-hivemind-mcp"
+version = "0.1.0"
+description = "MCP Server for Fortress HiveMind Access Layer"
+dependencies = [
+    "mcp[cli]>=0.1.0",
+    "pydantic>=2.0.0"
+]
+requires-python = ">=3.10"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
