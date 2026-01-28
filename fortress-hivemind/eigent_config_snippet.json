@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "fortress-hivemind": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--project",
+        "/YOUR/PATH/TO/fortress-hivemind/pyproject.toml",
+        "/YOUR/PATH/TO/fortress-hivemind/src/server.py"
+      ]
+    }
+  }
+}
