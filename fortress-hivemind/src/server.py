@@ -64,7 +64,9 @@ created_at: {time.time()}
 ---
 
 """
-    file_path.write_text(header + content)
+    with file_path.open("w") as f:
+        f.write(header)
+        f.write(content)
     return f"Task created at {file_path}"
 
 @mcp.tool()
