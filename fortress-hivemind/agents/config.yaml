@@ -1,0 +1,27 @@
+agents:
+  deep_agent:
+    name: "Deep Agent"
+    platform: "abacus"
+    api_key: "os.environ/ABACUS_DEEP_AGENT_KEY"
+    enabled: true
+
+  chatllm:
+    name: "ChatLLM"
+    platform: "abacus"
+    api_key: "os.environ/ABACUS_CHATLLM_KEY"
+    enabled: true
+
+  jules:
+    name: "Jules"
+    platform: "gemini"
+    api_key: "os.environ/GOOGLE_API_KEY"
+    enabled: true
+
+  gemini:
+    name: "Gemini"
+    platform: "google_raw"
+    api_key: "os.environ/GEMINI_API_KEY"
+    enabled: true
+
+communication:
+  log_file: "meeting_log.md"
