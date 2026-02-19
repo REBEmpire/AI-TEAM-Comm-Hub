@@ -18,7 +18,7 @@ class DeepAgent(BaseAgent):
         """Parses the markdown log into message format."""
         messages = []
         lines = history.split('\n')
-        current_msg = ""
+        current_msg_parts = []
         current_role = "user"
 
         for line in lines:
@@ -28,16 +28,16 @@ class DeepAgent(BaseAgent):
             match = re.match(r"\*\*(.+?)\*\*: (.*)", line)
             if match:
                 speaker, content = match.groups()
-                if current_msg:
-                    messages.append({"role": current_role, "content": current_msg.strip()})
+                if current_msg_parts:
+                    messages.append({"role": current_role, "content": "\n".join(current_msg_parts).strip()})
 
-                current_msg = content
+                current_msg_parts = [content]
                 current_role = "assistant" if speaker == self.name else "user"
             else:
-                current_msg += "\n" + line
+                current_msg_parts.append(line)
 
-        if current_msg:
-            messages.append({"role": current_role, "content": current_msg.strip()})
+        if current_msg_parts:
+            messages.append({"role": current_role, "content": "\n".join(current_msg_parts).strip()})
 
         return messages
 
