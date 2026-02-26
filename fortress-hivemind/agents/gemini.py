@@ -11,6 +11,7 @@ class GeminiRaw(BaseAgent):
         super().__init__("gemini")
         # Config loading in BaseAgent resolves os.environ/ placeholders
         self.api_key = self.agent_config.get("api_key")
+        self.client = httpx.Client()
 
     def generate_response(self, chat_history: str) -> str:
         if not self.api_key:
@@ -32,7 +33,7 @@ Please reply to the latest message if appropriate."""
         }
 
         try:
-            response = httpx.post(url, json=payload, timeout=30.0)
+            response = self.client.post(url, json=payload, timeout=30.0)
             response.raise_for_status()
             data = response.json()
 
