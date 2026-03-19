@@ -6,6 +6,8 @@ from .base import BaseAgent
 logger = logging.getLogger("DeepAgent")
 
 class DeepAgent(BaseAgent):
+    SPEAKER_PATTERN = re.compile(r"\*\*(.+?)\*\*: (.*)")
+
     def __init__(self):
         super().__init__("deep_agent")
         # Abacus RouteLLM uses OpenAI-compatible interface
@@ -25,7 +27,7 @@ class DeepAgent(BaseAgent):
             if not line.strip():
                 continue
 
-            match = re.match(r"\*\*(.+?)\*\*: (.*)", line)
+            match = self.SPEAKER_PATTERN.match(line)
             if match:
                 speaker, content = match.groups()
                 if current_msg_parts:
